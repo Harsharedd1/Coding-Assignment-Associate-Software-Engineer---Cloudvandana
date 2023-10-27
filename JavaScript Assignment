@@ -1,0 +1,58 @@
+1) Take a sentence as an input and reverse every word in that sentence. 
+     Example - I am Eagerly waiting to join in your company > I ma ylregaE gnitiaw ot nioj ni ruoy ynapmoc. 
+
+*Code starts from here*
+
+function reverseWords(sentence) {
+  let reversedSentence = '';
+  let word = '';
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] !== ' ') {
+      word = sentence[i] + word;
+    } else {
+      reversedSentence += word + ' ';
+      word = '';
+    }
+  }
+  reversedSentence += word;
+  return reversedSentence;
+}
+const inputSentence = "I am Eagerly waiting to join in your company";
+const reversedSentence = reverseWords(inputSentence);
+console.log(reversedSentence);
+
+Answer) Output for the input areI ma ylregaE gnitiaw ot nioj ni ruoy ynapmoc
+
+
+
+
+
+2) Perform sorting of an array in descending order. 
+
+*Code starts from here*
+
+function bubbleSortDescending(arr) {
+  const n = arr.length;
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < n - 1; i++) {
+      if (arr[i] < arr[i + 1]) {
+        const temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+
+  return arr;
+}
+
+const originalArray = [8, 2183, 2584, 1582, 1475, 6];
+const sortedArray = bubbleSortDescending(originalArray);
+console.log(sortedArray);
+
+Answer) Output for the input numbers are [ 2584, 2183, 1582, 1475, 8, 6 ]
+
+
