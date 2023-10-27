@@ -1,0 +1,117 @@
+1) Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it. 
+*Code starts from here*
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class ShuffleArray {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        Random random = new Random();
+        for (int i = 0; i < array.length; i++) {
+            int index = random.nextInt(array.length);
+            int temp = array[i];
+            array[i] = array[index];
+            array[index] = temp;
+        }
+        System.out.println(Arrays.toString(array));
+    }
+}
+
+Answer) the output will be shuffles the input numbers
+
+
+
+
+
+
+
+2) Enter a Roman Number as input and convert it to an integer. (ex XIV = 14) 
+
+*Code stsrts from here*
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class RomanToInteger {
+    public static void main(String[] args) {
+        String romanNumeral = "XIV";
+        int result = romanToInt(romanNumeral);
+        System.out.println("Integer equivalent: " + result);
+    }
+
+    public static int romanToInt(String s) {
+        Map<Character, Integer> romanValues = new HashMap<>();
+        romanValues.put('I', 1);
+        romanValues.put('V', 5);
+        romanValues.put('X', 10);
+        romanValues.put('L', 50);
+        romanValues.put('C', 100);
+        romanValues.put('D', 500);
+        romanValues.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char currentChar = s.charAt(i);
+            int currentValue = romanValues.get(currentChar);
+
+            if (currentValue < prevValue) {
+                result -= currentValue;
+            } else {
+                result += currentValue;
+            }
+
+            prevValue = currentValue;
+        }
+
+        return result;
+    }
+}
+
+Answer) Output For the given input is 14
+
+
+
+
+
+
+
+
+3. Check if the input is pangram or not. (Pangram is a sentence that contains all the alphabet
+from a-z) 
+
+*Code starts from here*
+
+public class PangramChecker {
+    public static void main(String[] args) {
+        String sentence = "I am intrested on this role in your company";
+        boolean isPangram = isPangram(sentence);
+        
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+    }
+
+    public static boolean isPangram(String sentence) {
+        boolean[] alphabetPresent = new boolean[26];
+        sentence = sentence.toLowerCase();
+        for (int i = 0; i < sentence.length(); i++) {
+            char c = sentence.charAt(i);
+            if (c >= 'a' && c <= 'z') {
+                alphabetPresent[c - 'a'] = true;
+            }
+        }
+        for (boolean letterPresent : alphabetPresent) {
+            if (!letterPresent) {
+                return false; 
+            }
+        }
+        return true; 
+    }
+}
+
+Answer) Output For the given input is "this is not a pangram"
